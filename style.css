@@ -68,6 +68,13 @@ nav li {
 
 /* DIVS */
 
+img.center {
+    display: block;
+    margin: 0 auto;
+    border: 5px; 
+    height: 80px;
+}
+
 div {
     margin: 30px auto 30px auto;
     border: 1px solid white;
@@ -94,10 +101,6 @@ div h2 {
 div li {
     font-family: 'Ovo';
     margin: 1% 10%;
-}
-
-#location {
-    color: slategrey;
 }
 
 /* LINKS */
