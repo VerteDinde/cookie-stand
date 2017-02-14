@@ -3,7 +3,11 @@
 // Store 1: 1st and Pike object: generate store list
 var pikeStore = {
   storeName: '1st and Pike',
-  storeHours: ['6:00a', '7:00a', '8:00a', '9:00a', '10:00a', '11:00a', '12:00p', '1:00p', '2:00p', '3:00p', '4:00p', '5:00p', '6:00p', '7:00p', '8:00p'],
+  storeHours: [
+    '6:00a', '7:00a', '8:00a', '9:00a', 
+    '10:00a', '11:00a', '12:00p', '1:00p', 
+    '2:00p', '3:00p', '4:00p', '5:00p', 
+    '6:00p', '7:00p', '8:00p'],
   avgCookies: 6.3,
   todayResults: [],
   max: 65,
@@ -42,7 +46,7 @@ var pikeStore = {
       storeList.appendChild(hourLi);
 
       // calculate sum of daily sales
-      this.todayResults.push[totalCookies];
+      this.todayResults.push(totalCookies);
       sumCookies += totalCookies;   // creates a total daily cookies
     }
 
@@ -58,7 +62,11 @@ pikeStore.generateStoreList();
 // Store 2: SeaTac
 var seaTacStore = {
   storeName: 'SeaTac Airport',
-  storeHours: ['6:00a', '7:00a', '8:00a', '9:00a', '10:00a', '11:00a', '12:00p', '1:00p', '2:00p', '3:00p', '4:00p', '5:00p', '6:00p', '7:00p', '8:00p'],
+  storeHours: [
+    '6:00a', '7:00a', '8:00a', '9:00a', 
+    '10:00a', '11:00a', '12:00p', '1:00p', 
+    '2:00p', '3:00p', '4:00p', '5:00p', 
+    '6:00p', '7:00p', '8:00p'],
   todayResults: [],
   avgCookies: 1.2,
   min: 3,
@@ -97,13 +105,13 @@ var seaTacStore = {
       storeList.appendChild(hourLi);
 
       // calculate sum of daily sales
-      this.todayResults.push[totalCookies];
+      this.todayResults.push(totalCookies);
       sumCookies += totalCookies;   // creates a total daily cookies
     }
 
-    sumLi = document.createElement('li');
-    sumLi.textContent = 'Total: ' + sumCookies + ' cookies sold today.';
-    storeList.appendChild(sumLi);
+    sumLi = document.createElement('li');   // creates a new node
+    sumLi.textContent = 'Total: ' + sumCookies + ' cookies sold today.';  // assigns value to node
+    storeList.appendChild(sumLi);   // appends the newly created node to a parent node
   }
 };
 
@@ -152,7 +160,7 @@ var seaCenStore = {
       storeList.appendChild(hourLi);
 
       // calculate sum of daily sales
-      this.todayResults.push[totalCookies];
+      this.todayResults.push(totalCookies);
       sumCookies += totalCookies;   // creates a total daily cookies
     }
 
@@ -208,7 +216,7 @@ var capHillStore = {
       storeList.appendChild(hourLi);
 
       // calculate sum of daily sales
-      this.todayResults.push[totalCookies];
+      this.todayResults.push(totalCookies);
       sumCookies += totalCookies;   // creates a total daily cookies
     }
 
@@ -263,7 +271,7 @@ var alkiStore = {
       storeList.appendChild(hourLi);
 
       // calculate sum of daily sales
-      this.todayResults.push[totalCookies];
+      this.todayResults.push(totalCookies);
       sumCookies += totalCookies;   // creates a total daily cookies
     }
 
