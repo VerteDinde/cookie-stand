@@ -1,17 +1,69 @@
 /* GENERAL */
 @import url('https://fonts.googleapis.com/css?family=Muli|Ovo');
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+body {
+    font-family: 'Ovo';
+    background-image: url('img/flour_table_bk.jpg');
+    background-size: 100%;
+    background-attachment: fixed;
+}
 
 h1 {
+    color: white;
+    font-size: 45px;
+    text-align: center;
+    font-family: 'Lobster';
+    margin: 30px 0 0 0;
+}
 
+h3 {
+    font: 'Muli';
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    margin: 0 0 0 0;
 }
 
 p {
-    font-family: 'Muli';
-
+    font: 'Ovo';
+    color: slategrey;
 }
 
-ul li {
-    font-family: 'Ovo';
+/* BACKGROUND */
+
+
+
+/* HEADER */
+
+header {
+    vertical-align: middle;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-color: lightpink;
+} 
+
+.title {
+    vertical-align: middle;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-color: lightpink;
+}
+
+nav {
+    text-align: center;
+}
+
+nav li {
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    display: inline-block;
+    margin: 0% 0% 0% 0%;
+    padding: 0% 4% 4% 4%;
+}
+
+.clearfix { 
+    clear: both;
 }
 
 /* DIVS */
@@ -20,10 +72,78 @@ div {
     margin: 30px auto 30px auto;
     border: 1px solid white;
     width: 900px;
-    background-color: rgba(0, 0, 0, 0.55);
-    padding: 0% 0% 3% 0%;
+    background-color: white;
+    padding: 0% 5% 3% 5%;
 }
 
-nav {
-    
+#stores {
+    margin: 30px auto 30px auto;
+    border: 1px solid white;
+    width: 1100px;
+    background-color: rgba(0, 0, 0, 0.55);
+    padding: 0% 0% 10% 0%;
 }
+
+div h2 {
+    font: 'Muli';
+    text-align: center;
+    border-bottom: 1px dotted black;
+}
+
+
+div li {
+    font-family: 'Ovo';
+    margin: 1% 10%;
+}
+
+#location {
+    color: slategrey;
+}
+
+/* LINKS */
+a:link {
+    color: white;
+}
+
+a:visited {
+    color: white;
+}
+
+a:hover {
+    color: blue;
+}
+
+a:active {
+    color: dimgrey;
+}
+
+/* FOOTER */
+
+footer {
+  font-size: 0.75em;
+  text-align: center;
+  clear: both;
+  padding-top: 50px;
+  color: #ccc;
+}
+
+.social-icon {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+}
+
+.github-icon {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+}
+
+.linkedin-icon {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+  /*border-radius: 20%;*/
+  /**adds rounded corners to element; makes circle**/
+}
+

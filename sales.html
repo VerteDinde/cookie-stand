@@ -2,27 +2,32 @@
 <html>
 <head>
     <link rel="stylesheet", href="style.css" />
-    <title>The Salmon Cookie Stand</title>
+    <title>Pat's Salmon Cookies</title>
 </head>
 <body>
-    <header>
+    <header class="clearfix">
         <nav>
-            <ul class="nav">
-                <li>About</li>
-                <li>Sales</li>
-                <li>Contact</li>
+            <ul id="nav">
+                <li><a href="index.html">About</a></li>
+                <li><a hrfe=#location>Location</a></li>
+                <li id="logo"><img src="img/salmon_logo.gif" style="width:80px; height:80px;"/></li>
+                <li><a href="sales.html">Sales</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
     <section>
+         <div class="title" style="text-align: center">
+            <h1>Pat's Salmon Cookies</h1>
+            <h3>Bakeshop and Cafe</h3>
+            <h3>--------</h3> 
+            <h3>Tuesday – Sunday</h3>
+            <h3>7am – 3pm</h3> 
+         </div>
+        <article id="stores">
             <h1>Sales Per Store</h1>
-            <p>Below is a recap of our sales per six stores.</p>
 
-            <div id="pike">
-                <h2 id="pike"></h2>
-                <ul id="pike">
-                </ul>
-            </div> <!-- end 1st and Pike -->
+            <div id="pike"></div>
 
             <div id="seatac"></div>
             
@@ -30,9 +35,18 @@
             
             <div id="caphill"></div>
             
-            <div id="alki">Alki</div>
+            <div id="alki"></div>
+        </article>
     </section>
 
-<script src="app.js"></script>
+    <script src="app.js"></script>
+    </section>
+    <footer>
+        <a href="http://twitter.com/keeleyhammond"><img src="img/twitter-wrap.svg" alt="Twitter Logo" class="social-icon"></a>
+        <a href="http://facebook.com/keeley.m.hammond"><img src="img/facebook-wrap.png" alt="FB Logo" class="social-icon"></a>
+        <a href="http://github.com/vertedinde"><img src="img/github-wrap.png" alt="GitHub Logo" class="github-icon"></a>
+        <a href="http://linkedin.com/keeleyhammond"><img src="img/linkedin-wrap.svg" alt="LinkedIn Logo" class="linkedin-icon"></a>
+        <p>&copy; 2016 Keeley Hammond.</p>
+      </footer>
 </body>
 </html>
