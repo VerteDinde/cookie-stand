@@ -1,12 +1,70 @@
 'use strict';
 
+// creating constructor
+function Store(name, max, min, avgCookies) {
+  this.name = name;
+  this.max = max;
+  this.min = min;
+  this.avgCookies = avgCookies;
+  this.todayResults = [];
+  this.storeHours = [
+    '6:00a', '7:00a', '8:00a', '9:00a',
+    '10:00a', '11:00a', '12:00p', '1:00p',
+    '2:00p', '3:00p', '4:00p', '5:00p',
+    '6:00p', '7:00p', '8:00p'
+  ];
+};
+
+Store.prototype.numCustomers = function() {   // make sure to write " = function () {"
+  var totalCustomers = Math.floor(Math.random() * (this.max - this.min) + this.min);
+  console.log('Total Customers: ' + totalCustomers);
+  return totalCustomers;
+};
+
+Store.prototype.numCookies = function() {
+  var totalCookies = Math.round(this.numCustomers() * this.avgCookies);
+  console.log('Total Cookies: ' + totalCookies);
+  return totalCookies;
+};
+
+Store.prototype.generateStoreList = function() {
+  var storeList = document.getElementById('test');
+  var storeNameLi = document.createElement('h2');
+  var hourLi;
+  var sumLi;
+  var sumCookies = 0;
+
+  storeNameLi.textContent = this.name;
+  storeList.appendChild(storeNameLi);
+
+  for (var i = 0; i < this.storeHours.length; i++) {
+    var totalCookies = this.numCookies();
+    var totalCustomers = this.numCustomers();
+
+    hourLi = document.createElement('li');
+    hourLi.textContent = this.storeHours[i] + ': ' + totalCustomers + ' customers and ' + totalCookies + ' cookies sold.';
+    storeList.appendChild(hourLi);
+
+    this.todayResults.push(totalCookies);
+    sumCookies += totalCookies;
+  }
+
+  sumLi = document.createElement('li');
+  sumLi.textContent = 'Total: ' + sumCookies + ' cookies sold today.';
+  storeList.appendChild(sumLi);
+};
+
+var testStore = new Store('Test Store', 15, 4, 3.5);
+testStore.generateStoreList();
+
+
 // Store 1: 1st and Pike object: generate store list
 var pikeStore = {
   storeName: '1st and Pike',
   storeHours: [
-    '6:00a', '7:00a', '8:00a', '9:00a', 
-    '10:00a', '11:00a', '12:00p', '1:00p', 
-    '2:00p', '3:00p', '4:00p', '5:00p', 
+    '6:00a', '7:00a', '8:00a', '9:00a',
+    '10:00a', '11:00a', '12:00p', '1:00p',
+    '2:00p', '3:00p', '4:00p', '5:00p',
     '6:00p', '7:00p', '8:00p'],
   avgCookies: 6.3,
   todayResults: [],
@@ -63,9 +121,9 @@ pikeStore.generateStoreList();
 var seaTacStore = {
   storeName: 'SeaTac Airport',
   storeHours: [
-    '6:00a', '7:00a', '8:00a', '9:00a', 
-    '10:00a', '11:00a', '12:00p', '1:00p', 
-    '2:00p', '3:00p', '4:00p', '5:00p', 
+    '6:00a', '7:00a', '8:00a', '9:00a',
+    '10:00a', '11:00a', '12:00p', '1:00p',
+    '2:00p', '3:00p', '4:00p', '5:00p',
     '6:00p', '7:00p', '8:00p'],
   todayResults: [],
   avgCookies: 1.2,
