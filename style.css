@@ -1,0 +1,29 @@
+/* GENERAL */
+@import url('https://fonts.googleapis.com/css?family=Muli|Ovo');
+
+h1 {
+
+}
+
+p {
+    font-family: 'Muli';
+
+}
+
+ul li {
+    font-family: 'Ovo';
+}
+
+/* DIVS */
+
+div {
+    margin: 30px auto 30px auto;
+    border: 1px solid white;
+    width: 900px;
+    background-color: rgba(0, 0, 0, 0.55);
+    padding: 0% 0% 3% 0%;
+}
+
+nav {
+    
+}
