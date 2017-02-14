@@ -24,7 +24,7 @@ var pikeStore = {
   // generate store list
   generateStoreList: function () {
     var storeList = document.getElementById('pike');
-    var storeNameLi = document.createElement('div');
+    var storeNameLi = document.createElement('h2');
     var hourLi;
     var sumLi;
     var sumCookies = 0;
@@ -79,7 +79,7 @@ var seaTacStore = {
   // generate store list
   generateStoreList: function () {
     var storeList = document.getElementById('seatac');
-    var storeNameLi = document.createElement('div');
+    var storeNameLi = document.createElement('h2');
     var hourLi;
     var sumLi;
     var sumCookies = 0;
@@ -134,7 +134,7 @@ var seaCenStore = {
   // generate store list
   generateStoreList: function () {
     var storeList = document.getElementById('seacenter');
-    var storeNameLi = document.createElement('div');
+    var storeNameLi = document.createElement('h2');
     var hourLi;
     var sumLi;
     var sumCookies = 0;
@@ -190,7 +190,7 @@ var capHillStore = {
   // generate store list
   generateStoreList: function () {
     var storeList = document.getElementById('caphill');
-    var storeNameLi = document.createElement('div');
+    var storeNameLi = document.createElement('h2');
     var hourLi;
     var sumLi;
     var sumCookies = 0;
@@ -220,3 +220,58 @@ var capHillStore = {
 };
 
 capHillStore.generateStoreList();
+
+// Store 4: Alki
+var alkiStore = {
+  storeName: 'Alki',
+  storeHours: ['6:00a', '7:00a', '8:00a', '9:00a', '10:00a', '11:00a', '12:00p', '1:00p', '2:00p', '3:00p', '4:00p', '5:00p', '6:00p', '7:00p', '8:00p'],
+  avgCookies: 4.6,
+  todayResults: [],
+  max: 16,
+  min: 2,
+
+  // calculate random customers
+  numCustomers: function (min, max) {
+    var totalCustomers = Math.floor(Math.random() * (max - min) + min);
+    return totalCustomers;
+  },
+
+  // calculate number of cookies sold
+  numCookies: function () {
+    var totalCookies = Math.round(this.numCustomers(this.min, this.max) * this.avgCookies);
+    return totalCookies;
+  },
+
+  // generate store list
+  generateStoreList: function () {
+    var storeList = document.getElementById('alki');
+    var storeNameLi = document.createElement('h2');
+    var hourLi;
+    var sumLi;
+    var sumCookies = 0;
+
+    storeNameLi.textContent = this.storeName;
+    storeList.appendChild(storeNameLi);
+
+    // print hours and cookies sold to sales.html
+    for (var i = 0; i < this.storeHours.length; i++) {
+      var totalCookies = this.numCookies();
+      var totalCustomers = this.numCustomers(this.min, this.max);
+
+      hourLi = document.createElement('li');
+      hourLi.textContent = this.storeHours[i] + ': ' + totalCustomers + ' customers and ' + totalCookies + ' cookies sold.';
+      storeList.appendChild(hourLi);
+
+      // calculate sum of daily sales
+      this.todayResults.push[totalCookies];
+      sumCookies += totalCookies;   // creates a total daily cookies
+    }
+
+    sumLi = document.createElement('li');
+    sumLi.textContent = 'Total: ' + sumCookies + ' cookies sold today.';
+    storeList.appendChild(sumLi);
+  }
+
+};
+
+alkiStore.generateStoreList();
