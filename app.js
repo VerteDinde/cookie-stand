@@ -1,5 +1,20 @@
 'use strict';
 
+var allStores = [];
+var totalCookiesPerHour = [];
+
+//function to clear table when new table is added
+function clearTables() {
+  document.getElementById('table-sales').textContent = '';
+  document.getElementById('table-staffing').textContent = '';
+  for (var i = 0; i < allStores.length; i++) {
+    allStores[i].todayResults = [];
+    allStores[i].todayCustomers = [];
+    allStores[i].cookieTosserArray = [];
+  }
+  totalCookiesPerHour = [];
+};
+
 // write eventListener to submit new row to page
 var userForm = document.getElementById('new_store');
 userForm.addEventListener('submit', submitHandler);
@@ -15,8 +30,13 @@ function submitHandler(event) {
   var avgCookies = parseInt(event.target.avg_cookies.value);
   console.log(avgCookies);
 
+  //create new table and push it to the allStores array
   var formStore = new Store(storeName, maxCus, minCus, avgCookies);
-  formStore.renderStore();
+  allStores.push(formStore);
+  // call functions to clear table and render a new table
+  clearTables();
+  renderSalesTable();
+  renderStaffTable();
 
   event.target.store_name.value = '';
   event.target.max_cus.value = '';
@@ -138,17 +158,33 @@ function renderFooter() {
   totalTh.textContent = 'Hourly Totals';
   tableRow.appendChild(totalTh);
 
-  // add column totals: PSUEDOCODE BELOW
-  // for loop iterating through existing row (tableHours)
-  // create td element
-  // math that sums values for table column
-  // print textContent to td
-  // append to tableRow
+  // // add column totals: PSUEDOCODE BELOW
+  // // for loop iterating through existing row (tableHours)
+  // // math that sums values for table column
+  // var totalAllStores = 0;
+  // for (var i = 0; i < this.todayResults.length; i++) {
+  //   console.log(this.todayResults);
+  //   var sumCookies = 0;
+  //   sumCookies += this.todayResults[i];
+  //   console.log(sumCookies);
+  //   totalCookiesPerHour.push(sumCookies);
+  //   console.log(totalCookiesPerHour);
+
+  //   // create td element
+  //   // print textContent to td
+  //   // append to tableRow
+  //   sumTd = document.createElement('td');
+  //   sumTd.textContent = sumCookies;
+  //   tableRow.appendChild(sumTd);
+  // }
+  // totalTd = document.createElement('td');
+  // totalTd.textContent = totalAllStores;
+  // tableRow.appendChild(totalTd);
 };
 
 // BEGIN STAFFING TABLE
 // Staffing: generate header row
-function renderStaffingHeader() {   //change this to just a function, not a prototype
+function renderStaffHeader() {   //change this to just a function, not a prototype
   var hourTd;
   var tableHours = [
     '', '6:00a', '7:00a', '8:00a', '9:00a',
@@ -179,7 +215,7 @@ function renderStaffingHeader() {   //change this to just a function, not a prot
 };
 
 // Staffing: generate store row
-Store.prototype.renderStaffingStore = function() {
+Store.prototype.renderStaffStore = function() {
   var staffTd;
   var sumTd;
   var sumStaff = 0;
@@ -223,7 +259,7 @@ Store.prototype.renderStaffingStore = function() {
 };
 
 //generate footer row
-function renderStaffingFooter() {
+function renderStaffFooter() {
   // pull from 'table' in DOM, creater tfooter, append tfooter
   var storeTable = document.getElementById('table-staffing');
   var tableFooter = document.createElement('tfooter');
@@ -249,34 +285,40 @@ function renderStaffingFooter() {
 // create stores
 //Store 1: 1st and Pike
 var pikeStore = new Store('1st and Pike', 65, 23, 6.3, 'pike');
+allStores.push(pikeStore);
 // Store 2: Seattle Tacoma Airport
 var seaTacStore = new Store('SeaTac Airport', 24, 3, 1.2, 'seatac');
+allStores.push(seaTacStore);
 // Store 3: Seattle Center
 var seaCenStore = new Store('Seattle Center', 38, 11, 3.7, 'seacen');
+allStores.push(seaCenStore);
 // Store 4: Capitol Hill
 var capHillStore = new Store('Capitol Hill', 38, 20, 2.3, 'caphill');
+allStores.push(capHillStore);
 // Store 5: Alki
 var alkiStore = new Store('Alki', 16, 2, 4.6, 'alki');
+allStores.push(alkiStore);
 
 
-// call header row(s)
-renderHeader();
-renderStaffingHeader();
+// CALL STORES
+// create table: sales/cookies
+function renderSalesTable() {
+  renderHeader();
+  for (var i = 0; i < allStores.length; i++) {
+    allStores[i].renderStore();
+  }
+  renderFooter();
+}
 
-// call stores: cookies
-pikeStore.renderStore();
-seaTacStore.renderStore();
-seaCenStore.renderStore();
-capHillStore.renderStore();
-alkiStore.renderStore();
+renderSalesTable();
 
-// call stores: staff
-pikeStore.renderStaffingStore();
-seaTacStore.renderStaffingStore();
-seaCenStore.renderStaffingStore();
-capHillStore.renderStaffingStore();
-alkiStore.renderStaffingStore();
+// create table: staff
+function renderStaffTable() {
+  renderStaffHeader();
+  for (var i = 0; i < allStores.length; i++) {
+    allStores[i].renderStaffStore();
+  }
+  renderStaffFooter();
+}
 
-// call footer row(s)
-renderFooter();
-renderStaffingFooter();
+renderStaffTable();
