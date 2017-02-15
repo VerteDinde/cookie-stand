@@ -62,8 +62,8 @@ nav li {
     clear: both;
 }
 
-/* DIVS */
 
+/* TABLES */
 table {
     border: 1px solid black;
     text-align: center;
@@ -75,6 +75,7 @@ th {
     border-bottom: 1px solid black;
 }
 
+/* DIVS */
 img.center {
     display: block;
     margin: 0 auto;

@@ -1,13 +1,5 @@
 'use strict';
 
-// used in header and footer functions
-var tableHours = [
-  '', '6:00a', '7:00a', '8:00a', '9:00a',
-  '10:00a', '11:00a', '12:00p', '1:00p',
-  '2:00p', '3:00p', '4:00p', '5:00p',
-  '6:00p', '7:00p', '8:00p', 'Daily Location Total'
-];
-
 // creating constructor
 function Store(name, max, min, avgCookies) {
   this.name = name;
@@ -15,6 +7,8 @@ function Store(name, max, min, avgCookies) {
   this.min = min;
   this.avgCookies = avgCookies;
   this.todayResults = [];
+  this.todayCustomers = [];
+  this.cookieTosserArray = [];
   this.storeHours = [
     '6:00a', '7:00a', '8:00a', '9:00a',
     '10:00a', '11:00a', '12:00p', '1:00p',
@@ -25,7 +19,9 @@ function Store(name, max, min, avgCookies) {
 
 Store.prototype.numCustomers = function() {   // make sure to write " = function () {"
   var totalCustomers = Math.floor(Math.random() * (this.max - this.min) + this.min);
-  console.log('Total Customers: ' + totalCustomers);
+  console.log('Total Customers: ', totalCustomers);
+  this.todayCustomers.push(totalCustomers);
+  console.log('Customer Array: ', this.todayCustomers);
   return totalCustomers;
 };
 
@@ -35,12 +31,19 @@ Store.prototype.numCookies = function() {
   return totalCookies;
 };
 
-//generate header row
+// BEGIN SALES TABLE
+// Sales: generate header row
 function renderHeader() {   //change this to just a function, not a prototype
   var hourTd;
+  var tableHours = [
+    '', '6:00a', '7:00a', '8:00a', '9:00a',
+    '10:00a', '11:00a', '12:00p', '1:00p',
+    '2:00p', '3:00p', '4:00p', '5:00p',
+    '6:00p', '7:00p', '8:00p', 'Daily Location Total'
+  ];
 
   //create table and empty table row
-  var storeTable = document.getElementById('table');
+  var storeTable = document.getElementById('table-sales');
   if (storeTable) {
     console.log('grab table');
   }
@@ -60,14 +63,13 @@ function renderHeader() {   //change this to just a function, not a prototype
   //storeTable.appendChild(tableBody);
 };
 
-
-//generate store row
+// Sales: generate store row
 Store.prototype.renderStore = function() {
   var cookieTd;
   var sumTd;
   var sumCookies = 0;
 
-  var storeTable = document.getElementById('table');
+  var storeTable = document.getElementById('table-sales');
   if (storeTable) {
     console.log('grab table');
   }
@@ -96,10 +98,10 @@ Store.prototype.renderStore = function() {
   tableRow.appendChild(sumTd);
 };
 
-//generate footer row
+// Sales: generate footer row
 function renderFooter() {
   // pull from 'table' in DOM, creater tfooter, append tfooter
-  var storeTable = document.getElementById('table');
+  var storeTable = document.getElementById('table-sales');
   var tableFooter = document.createElement('tfooter');
   storeTable.appendChild(tableFooter);
 
@@ -110,6 +112,102 @@ function renderFooter() {
   // add "Totals" box to table
   var totalTh = document.createElement('th');
   totalTh.textContent = 'Hourly Totals';
+  tableRow.appendChild(totalTh);
+
+  // add column totals: PSUEDOCODE BELOW
+  // for loop iterating through existing row (tableHours)
+  // create td element
+  // math that sums values for table column
+  // print textContent to td
+  // append to tableRow
+};
+
+// BEGIN STAFFING TABLE
+// Staffing: generate header row
+function renderStaffingHeader() {   //change this to just a function, not a prototype
+  var hourTd;
+  var tableHours = [
+    '', '6:00a', '7:00a', '8:00a', '9:00a',
+    '10:00a', '11:00a', '12:00p', '1:00p',
+    '2:00p', '3:00p', '4:00p', '5:00p',
+    '6:00p', '7:00p', '8:00p', 'Daily Staff Total'
+  ];
+
+  //create table and empty table row
+  var storeTable = document.getElementById('table-staffing');
+  if (storeTable) {
+    console.log('grab table');
+  }
+  var tableHead = document.createElement('thead');
+  storeTable.appendChild(tableHead);
+  var tableRow = document.createElement('tr');
+  tableHead.appendChild(tableRow);
+
+  // push hoursTd to new table row
+  for (var i = 0; i < tableHours.length; i++) {
+    hourTd = document.createElement('th');
+    hourTd.textContent = tableHours[i];
+    tableRow.appendChild(hourTd);
+  }
+
+  //var tableBody = document.createElement('tbody');
+  //storeTable.appendChild(tableBody);
+};
+
+// Staffing: generate store row
+Store.prototype.renderStaffingStore = function() {
+  var staffTd;
+  var sumTd;
+  var sumStaff = 0;
+
+  var storeTable = document.getElementById('table-staffing');
+  if (storeTable) {
+    console.log('grab table');
+  }
+  var tableRow = document.createElement('tr');
+  storeTable.appendChild(tableRow);
+
+  // create row that begins with table cell
+  var storeNameTh = document.createElement('th');
+  storeNameTh.textContent = this.name;
+  console.log('Store Name: ' + storeNameTh.textContent);
+  tableRow.appendChild(storeNameTh);
+
+  for (var i = 0; i < this.todayCustomers.length; i++) {
+    // create equation for pulling number of staff per store per hour
+    console.log('Print array:', this.todayCustomers);
+    var cookieTossers = this.todayCustomers[i] / 10;
+    console.log('cookie tosser: ' + cookieTossers);
+    //cookieTossers = Math.min(2);
+
+    staffTd = document.createElement('td');
+    staffTd.textContent = cookieTossers;
+    tableRow.appendChild(staffTd);
+
+    this.cookieTosserArray.push(cookieTossers);
+    console.log('Cookie Tosser Array: ', this.cookieTosserArray);
+    sumStaff += cookieTossers;
+  }
+
+  sumTd = document.createElement('td');
+  sumTd.textContent = sumStaff;
+  tableRow.appendChild(sumTd);
+};
+
+//generate footer row
+function renderStaffingFooter() {
+  // pull from 'table' in DOM, creater tfooter, append tfooter
+  var storeTable = document.getElementById('table-staffing');
+  var tableFooter = document.createElement('tfooter');
+  storeTable.appendChild(tableFooter);
+
+  // append table row to footer
+  var tableRow = document.createElement('tr');
+  tableFooter.appendChild(tableRow);
+
+  // add "Totals" box to table
+  var totalTh = document.createElement('th');
+  totalTh.textContent = 'Total Staff Per Hour';
   tableRow.appendChild(totalTh);
 
   // add column totals: PSUEDOCODE BELOW
@@ -132,15 +230,24 @@ var capHillStore = new Store('Capitol Hill', 38, 20, 2.3, 'caphill');
 // Store 5: Alki
 var alkiStore = new Store('Alki', 16, 2, 4.6, 'alki');
 
-// call header row
+// call header row(s)
 renderHeader();
+renderStaffingHeader();
 
-// call stores
+// call stores: cookies
 pikeStore.renderStore();
 seaTacStore.renderStore();
 seaCenStore.renderStore();
 capHillStore.renderStore();
 alkiStore.renderStore();
 
-// call footer row
+// call stores: staff
+pikeStore.renderStaffingStore();
+seaTacStore.renderStaffingStore();
+seaCenStore.renderStaffingStore();
+capHillStore.renderStaffingStore();
+alkiStore.renderStaffingStore();
+
+// call footer row(s)
 renderFooter();
+renderStaffingFooter();
