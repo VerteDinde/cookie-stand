@@ -1,5 +1,29 @@
 'use strict';
 
+// write eventListener to submit new row to page
+var userForm = document.getElementById('new_store');
+userForm.addEventListener('submit', submitHandler);
+
+function submitHandler(event) {
+  event.preventDefault();
+  var storeName = event.target.store_name.value;
+  console.log(storeName);
+  var maxCus = parseInt(event.target.max_cus.value);
+  console.log(maxCus);
+  var minCus = parseInt(event.target.min_cus.value);
+  console.log(minCus);
+  var avgCookies = parseInt(event.target.avg_cookies.value);
+  console.log(avgCookies);
+
+  var formStore = new Store(storeName, maxCus, minCus, avgCookies);
+  formStore.renderStore();
+
+  event.target.store_name.value = '';
+  event.target.max_cus.value = '';
+  event.target.min_cus.value = '';
+  event.target.avg_cookies.value = '';
+};
+
 // creating constructor
 function Store(name, max, min, avgCookies) {
   this.name = name;
@@ -233,6 +257,7 @@ var seaCenStore = new Store('Seattle Center', 38, 11, 3.7, 'seacen');
 var capHillStore = new Store('Capitol Hill', 38, 20, 2.3, 'caphill');
 // Store 5: Alki
 var alkiStore = new Store('Alki', 16, 2, 4.6, 'alki');
+
 
 // call header row(s)
 renderHeader();
