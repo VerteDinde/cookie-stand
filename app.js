@@ -177,8 +177,12 @@ Store.prototype.renderStaffingStore = function() {
     // create equation for pulling number of staff per store per hour
     console.log('Print array:', this.todayCustomers);
     var cookieTossers = this.todayCustomers[i] / 10;
+    if (cookieTossers <= 2) {
+      cookieTossers = 2;
+    } else {
+      cookieTossers = Math.ceil(cookieTossers);   //rounds up to next integer if decimel is present
+    };
     console.log('cookie tosser: ' + cookieTossers);
-    //cookieTossers = Math.min(2);
 
     staffTd = document.createElement('td');
     staffTd.textContent = cookieTossers;
