@@ -1,6 +1,12 @@
 'use strict';
 
 var allStores = [];
+var storeHours = [
+  '6:00a', '7:00a', '8:00a', '9:00a',
+  '10:00a', '11:00a', '12:00p', '1:00p',
+  '2:00p', '3:00p', '4:00p', '5:00p',
+  '6:00p', '7:00p', '8:00p'
+];
 var totalCookiesPerHour = [];
 
 //function to clear table when new table is added
@@ -61,7 +67,7 @@ function Store(name, max, min, avgCookies) {
   ];
 };
 
-Store.prototype.numCustomers = function() {   // make sure to write " = function () {"
+Store.prototype.numCustomers = function () {   // make sure to write " = function () {"
   var totalCustomers = Math.floor(Math.random() * (this.max - this.min) + this.min);
   console.log('Total Customers: ', totalCustomers);
   this.todayCustomers.push(totalCustomers);
@@ -69,7 +75,7 @@ Store.prototype.numCustomers = function() {   // make sure to write " = function
   return totalCustomers;
 };
 
-Store.prototype.numCookies = function() {
+Store.prototype.numCookies = function () {
   var totalCookies = Math.round(this.numCustomers() * this.avgCookies);
   console.log('Total Cookies: ' + totalCookies);
   return totalCookies;
@@ -108,7 +114,7 @@ function renderHeader() {   //change this to just a function, not a prototype
 };
 
 // Sales: generate store row
-Store.prototype.renderStore = function() {
+Store.prototype.renderStore = function () {
   var cookieTd;
   var sumTd;
   var sumCookies = 0;
@@ -158,28 +164,33 @@ function renderFooter() {
   totalTh.textContent = 'Hourly Totals';
   tableRow.appendChild(totalTh);
 
-  // // add column totals: PSUEDOCODE BELOW
-  // // for loop iterating through existing row (tableHours)
-  // // math that sums values for table column
-  // var totalAllStores = 0;
-  // for (var i = 0; i < this.todayResults.length; i++) {
-  //   console.log(this.todayResults);
-  //   var sumCookies = 0;
-  //   sumCookies += this.todayResults[i];
-  //   console.log(sumCookies);
-  //   totalCookiesPerHour.push(sumCookies);
-  //   console.log(totalCookiesPerHour);
+    // for loop iterating through each value of todayResults for all stores and summing them
+    // math that sums values for table column
+  var totalAllStores = 0;
+  var hourTotal;
+  var hourTd;
+  var dailyTotalTd;
+  
+  for (var i = 0; i < storeHours.length; i++) {
+    hourTotal = 0;
 
-  //   // create td element
-  //   // print textContent to td
-  //   // append to tableRow
-  //   sumTd = document.createElement('td');
-  //   sumTd.textContent = sumCookies;
-  //   tableRow.appendChild(sumTd);
-  // }
-  // totalTd = document.createElement('td');
-  // totalTd.textContent = totalAllStores;
-  // tableRow.appendChild(totalTd);
+    for (var j = 0; j < allStores.length; j++) {
+      hourTotal += allStores[j].todayResults[i];
+      console.log(hourTotal);
+    }
+    totalCookiesPerHour.push(hourTotal);
+    console.log(totalCookiesPerHour);
+    // create td element and append to tableRow
+    hourTd = document.createElement('td');
+    hourTd.textContent = hourTotal;
+    tableRow.appendChild(hourTd);
+
+    totalAllStores += hourTotal;
+  }
+  
+  dailyTotalTd = document.createElement('td');
+  dailyTotalTd.textContent = totalAllStores;
+  tableRow.appendChild(dailyTotalTd);
 };
 
 // BEGIN STAFFING TABLE
@@ -215,7 +226,7 @@ function renderStaffHeader() {   //change this to just a function, not a prototy
 };
 
 // Staffing: generate store row
-Store.prototype.renderStaffStore = function() {
+Store.prototype.renderStaffStore = function () {
   var staffTd;
   var sumTd;
   var sumStaff = 0;

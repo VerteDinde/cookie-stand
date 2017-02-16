@@ -76,6 +76,12 @@ th {
 }
 
 /* DIVS */
+
+form {
+    width: 300px;
+    margin: 0 auto;
+}
+
 img.center {
     display: block;
     margin: 0 auto;
