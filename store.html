@@ -1,4 +1,66 @@
-// Mock up an order form that would be public facing (store.html) so that visitors to the website can order salmon cookies and swag. 
-// That form would need to receive all of the things you'd expect on an order form: name, address, payment info, products to order, quantities, special instructions, and so on.
-// A second 'private' page (order-processing.html) that shows a list of pending orders and the individual order details. 
-// The business owner can then process the orders by clicking a button next to the order that then moves that list item to a 'Filled Orders' list at the bottom of the page.
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+    <nav>
+        <img src="img/Chinook_Logo.png" />
+        <ul id="nav">
+            <li><a href="index.html">About</a></li>
+            <li><a href=#location>Location</a></li>
+            <li><a href="sales.html">Sales</a></li>
+            <li><a href="index.html#location">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+    <div class="title" style="text-align: center">
+        <h1>Pat's Salmon Cookies</h1>
+        <h3>Tuesday – Sunday | 6am – 8pm</h3>
+        <h3>Bakeshop and Cafe</h3>
+        <h3>--------</h3>
+    </div>
+    <main>
+        <h1>Order Merchandise</h1>
+        <ul class="sub-banner">
+            <li><a href="index.html#about"><img src="img/subbanner_buy_cookie.jpg"></a></li>
+            <li><a href="store.html"><img src="img/subbanner_merch.jpg"></a></li>
+            <li><a href="index.html#location"><img src="img/subbanner_events.jpg"></a></li>
+        </ul>
+        <p>At Pat's Salmon Cookies, we can't wait to serve you!</p> 
+        <p>We're currently selling our world-famous Salmon Cookies in baker's dozen batches, as well as gift baskets and salmon t-shirts. Please call us to place an order, or place your order online below:</p>
+        <h3>--------</h3>
+        <form id="shop">
+            <p>Name: <input name="name" type="text" placeholder="Name">
+           City: <input name="address" type="text" placeholder="City"></p>
+            <p> Email: <input name="email" type="text" placeholder="Email"></p>
+            <p>Select Item: <select name="item" placeholder="Select Item">
+                <option name="Salmon Cookies">Salmon Cookies (one dozen)</option>
+                <option name="Salmon Shirt">Salmon Shirt</option>
+                <option name="Gift Basket">Gift Basket</option>
+            </select></p>
+            <p>Quantity: <input name="quantity" type="number" placeholder="Quantity">
+            <p>Credit Card #: <input name="payment" type="password"></p>
+            <p><i>Note: This is just a demo page, and has no security; please do not actually put in your real credit card number.</i></p>
+            </br>
+            <p>I agree to receive more information about Pat's Salmon Cookies.<input name"offers" type="checkbox" checked="checked"></p>
+            </br>
+            <button type="submit">Submit</button>
+            </br>
+            <span></span>
+        </form>
+    </main>
+    <footer>
+        <p class="salmon-logo"><img class="center" src="img/ugly-salmon.png" /></p>
+        <h1>Pat's Salmon Cookies</h1>
+        <a href="http://twitter.com/keeleyhammond"><img src="img/twitter-wrap.svg" alt="Twitter Logo" class="social-icon"></a>
+        <a href="http://facebook.com/keeley.m.hammond"><img src="img/facebook-wrap.png" alt="FB Logo" class="social-icon"></a>
+        <a href="http://github.com/vertedinde"><img src="img/github-wrap.png" alt="GitHub Logo" class="github-icon"></a>
+        <a href="http://linkedin.com/keeleyhammond"><img src="img/linkedin-wrap.svg" alt="LinkedIn Logo" class="linkedin-icon"></a>
+        <p>&copy; 2016 Keeley Hammond.</p>
+      </footer>
+      <script src="merch.js"></script>
+</body>
+</html>

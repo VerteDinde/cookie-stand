@@ -11,6 +11,51 @@ body {
     margin: 0 auto;
 }
 
+/* HEADER */
+
+header {
+    vertical-align: middle;
+    background-image: url('img/header_image.jpg');
+    background-color: rgba(0, 0, 0, 0.55);
+} 
+
+nav {
+    width: 960px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 4% 4% 2% 4%;
+}
+
+nav ul {
+    float: center;
+}
+
+nav img {
+    float: left;
+    margin-bottom: 10px;
+}
+
+nav li {
+    display: inline-block;
+    text-align: center;
+    color: white;
+    font-family: 'Lobster';
+    text-decoration: none;
+    font-size: 25px;
+    margin: 0% 0% 0% 0%;
+    padding: 0% 4% 4% 4%;
+}
+
+/* BODY */
+
+main {
+    margin: 30px auto;
+    border: 1px solid white;
+    text-align: center;
+    width: 960px;
+}
+
+
 h1 {
     color: black;
     font-size: 45px;
@@ -22,6 +67,7 @@ h1 {
 h2 {
     font-family: 'Oswald';
     text-align: center;
+    font-size: 30px;
     border-bottom: 1px dotted black;
 }
 
@@ -36,88 +82,90 @@ h3 {
 p {
     font-family: 'Open Sans';
     color: black;
+    line-height: 140%
 }
 
-/* HEADER */
-
-header {
-    vertical-align: middle;
-    background-color: rgba(245, 245, 245, 0.5);
-    border-color: lightpink;
-} 
-
-nav {
-    width: 100%;
-    display: inline-block;
-    text-align: center;
-    background-image: url('img/header_image.jpg');
-    background-color: rgba(0, 0, 0, 0.55);
-    margin: 0% 0% 0% 0%;
-    padding: 4% 4% 0% 4%;
+.sub-banner {
+    margin: 30px 0px;
 }
 
-nav ul {
-    float: center;
+.sub-banner:after {
+    display: table;
+    content:'';
+    clear: both;
 }
 
-nav img {
+.sub-banner li {
     float: left;
-    padding: 0 0 0 30px;
-}
-
-nav li {
-    display: inline-block;
-    text-align: center;
-    color: white;
-    font-family: 'Lobster';
+    margin-left: 30px;
     text-decoration: none;
-    font-size: 25px;
-    margin: 0% 0% 0% 0%;
-    padding: 0% 4% 4% 4%;
 }
 
-
-/* BODY */
-
-main {
-    margin: 30px auto 30px auto;
-    border: 1px solid white;
-    text-align: center;
-    width: 960px;
+.sub-banner li:first-child {
+    margin-left: 0px;
 }
 
-#sub-banner {
-    padding: 0% 3% 3% 0%;
+.nav a {
+    color: salmon;
 }
 
-#sub-banner li {
-    display: inline-block;
+.nav a:hover {
+    color: blue;
 }
 
 div.feature1 {
-    padding: 10px 0 10px 0;
+    margin: 30px 0;
+}
+
+.feature1:after {
+    display: table;
+    content:'';
+    clear: both;
 }
 
 div.feature2 {
-    padding: 10px 0 10px 0;
+    padding: 30px 0;
+}
+
+.feature2:after {
+    display: table;
+    content:'';
+    clear: both;
 }
 
 .feature1 img {
     float: left;
-    padding: 0 30px 0 0;
+    width: calc(50% - 30px);
+    margin-right: 30px;
 }
 
 .feature1 p {
+    margin: 15px;
     text-align: left;
 }
 
 .feature2 img {
     float: right;
-    padding: 0 0 0 30px;
+    width: calc(50% - 30px);
+    margin-left: 30px;
 }
 
 .feature2 p {
+    margin: 15px;
     text-align: left;
+}
+
+.feature1 button {
+    outline: none;
+    padding: 10px 40px;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.feature1 button:hover {
+    background-color: indianred;
 }
 
 /* TABLES */
@@ -137,6 +185,24 @@ th {
 form {
     width: 300px;
     margin: 0 auto;
+}
+
+form#shop {
+    width: 600px;
+    text-align: left;
+    line-height: 140%;
+    margin: 40px auto;
+}
+
+form#shop input {
+    margin: 0 10% 0 0;
+}
+
+form#shop button {
+    background-color: rgba(186, 113, 88, 100);
+    color: white;
+    margin: 0 10% 0 0;
+    text-align: center;
 }
 
 #stores {
