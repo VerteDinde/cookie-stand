@@ -61,17 +61,20 @@ Order.prototype.renderOrder = function () {
   orderTable.appendChild(tRow);
   var indexContent;
 
-  for (var key in allOrders[i]) {
-    // skip loop if the property is from prototype
-    if (!Order.hasOwnProperty(key)) continue;
+  for (var i = 0; i < Order[i]; i++) {
+    indexContent = Order[i];
 
-    var obj = Order[key];
-    for (var prop in obj) {
-      // skip loop if the property is from prototype
-      if (!obj.hasOwnProperty(prop)) continue;
-      // your code
-      indexContent = obj[prop];
-    }
+  // for (var key in allOrders[i]) {
+  //   // skip loop if the property is from prototype
+  //   if (!Order.hasOwnProperty(key)) continue;
+
+  //   var obj = Order[key];
+  //   for (var prop in obj) {
+  //     // skip loop if the property is from prototype
+  //     if (!obj.hasOwnProperty(prop)) continue;
+  //     // your code
+  //     indexContent = obj[prop];
+  //   }
 
     var orderTd = document.createElement('td');
     orderTd.textContent = indexContent;
